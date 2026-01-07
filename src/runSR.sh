@@ -129,7 +129,7 @@ fi
 echo -e "[M::worker_pipeline:: Compute effective NGS coverage]"
 #-------------------------------------------------------------------------------------------------------------
 #samtools depth -a  SRout/$SRname"_sort.bam"  > SRout/$SRname"_sort.depth" 
-samtools view -h -@ $t -q $mapquality SRout/$SRname"_sort.bam" |samtools depth -a - | perl $src/avgdep.pl SRout seq.size - >SRout/$SRname"_sort.depth"
+samtools view -h -@ $t -q $mapquality SRout/$SRname"_sort.bam" |samtools depth -@ $t  -a - | perl $src/avgdep.pl SRout seq.size - >SRout/$SRname"_sort.depth"
 
         SRavg_depth=$(cat SRout/Avgcov)
 echo -e "[M::NGS mapping coverage: $SRavg_depth]"
