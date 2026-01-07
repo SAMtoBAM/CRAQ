@@ -154,7 +154,7 @@ fi
 
 
 echo -e "[M::worker_pipeline:: Compute effective SMS coverage]"
-	samtools depth -a  LRout/$LRname"_sort.bam" | perl $src/avgdep.pl LRout seq.size - > LRout/$LRname"_sort.depth" 
+	samtools depth -@ $t -a  LRout/$LRname"_sort.bam" | perl $src/avgdep.pl LRout seq.size - > LRout/$LRname"_sort.depth" 
         LRavg_depth=$(cat LRout/Avgcov)
 echo -e "[M::SMS mapping coverage: $LRavg_depth]"
 	rm LRout/Avgcov
